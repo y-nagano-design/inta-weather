@@ -1,11 +1,11 @@
 {
-  "date": "2026-05-18",
-  "fetched_at": "2026-05-18T08:26:08.116Z",
+  "date": "2026-05-19",
+  "fetched_at": "2026-05-18T23:34:18.667Z",
   "source": "open-meteo",
   "location": "Kyoto Shimogyo-ku",
   "weather_text": "晴れ",
   "slack_emoji": ":sunny:",
-  "max_c": 31,
-  "min_c": 13,
-  "wmo_code": 1
+  "max_c": 29,
+  "min_c": 16,
+  "wmo_code": 0
 }
