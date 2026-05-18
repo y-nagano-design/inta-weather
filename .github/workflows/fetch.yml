@@ -1,0 +1,43 @@
+name: fetch
+
+# 京都市下京区の天気を Open-Meteo から取得して
+# weather/kyoto-shimogyo.json を更新する。
+# inta リポジトリの self-nagano-ohayo スキルがこのファイルを
+# raw.githubusercontent.com 経由で読む。
+
+on:
+  schedule:
+    # 22:30 UTC = 07:30 JST（永野さんの朝の下書き作成 09:00 JST の 90 分前）
+    - cron: "30 22 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+
+      - name: Fetch weather and write JSON
+        run: bun run scripts/fetch-weather-kyoto.ts
+
+      - name: Commit if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add weather/kyoto-shimogyo.json
+          if git diff --cached --quiet; then
+            echo "No weather changes"
+          else
+            git commit -m "chore(weather): update kyoto-shimogyo $(date -u +%Y-%m-%dT%H:%MZ)"
+            git push
+          fi
+
+      - name: Show summary
+        run: cat weather/kyoto-shimogyo.json
