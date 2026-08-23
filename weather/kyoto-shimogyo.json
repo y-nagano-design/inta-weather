@@ -1,11 +1,11 @@
 {
-  "date": "2026-08-23",
-  "fetched_at": "2026-08-22T22:43:41.825Z",
+  "date": "2026-08-24",
+  "fetched_at": "2026-08-23T22:43:41.235Z",
   "source": "open-meteo",
   "location": "Kyoto Shimogyo-ku",
-  "weather_text": "霧雨",
-  "slack_emoji": ":rain_cloud:",
+  "weather_text": "晴れ時々曇り",
+  "slack_emoji": ":partly_sunny:",
   "max_c": 35,
-  "min_c": 24,
-  "wmo_code": 51
+  "min_c": 25,
+  "wmo_code": 2
 }
